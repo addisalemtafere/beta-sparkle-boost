@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router-dom';
+import { BROWSER_CONFIG } from '@/lib/constants';
 
 interface BingoNumber {
   letter: string;
@@ -147,7 +148,7 @@ const BingoGame: React.FC = () => {
         
         {/* Bookmark Tabs */}
         <div className="flex space-x-1 mt-2">
-          {['javacode', 'Microservice', 'Best article', 'How to upload a file from...', '{EA} Add Git Ignore to existing...', 'convix', 'Angular 2 - Async Validator...', 'german'].map((tab, index) => (
+          {BROWSER_CONFIG.BOOKMARKS.map((tab, index) => (
             <div key={index} className="bg-muted/60 px-3 py-1 rounded-t text-xs truncate max-w-32 border border-border/30 hover:bg-muted/80 transition-colors">
               {tab}
             </div>

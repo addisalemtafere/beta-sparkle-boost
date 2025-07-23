@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -18,16 +18,13 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        // Gaming variants
-        game: "bg-gradient-primary text-primary-foreground font-semibold hover:scale-105 hover:shadow-glow-primary active:scale-95 border border-primary/20",
-        premium: "bg-gradient-card text-foreground border border-accent/30 hover:border-accent/60 hover:shadow-glow-accent hover:scale-105 active:scale-95",
-        timer: "bg-muted/50 text-muted-foreground font-mono backdrop-blur-sm border border-border/50"
+        game: "bg-gradient-to-r from-primary to-primary-glow text-primary-foreground hover:from-primary/90 hover:to-primary-glow/90 shadow-glow-primary",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
-        xl: "h-14 rounded-lg px-10 text-base font-semibold",
+        xl: "h-12 rounded-md px-8 text-base",
         icon: "h-10 w-10",
       },
     },

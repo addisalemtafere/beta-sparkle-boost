@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Link } from 'react-router-dom';
+import { BROWSER_CONFIG } from '@/lib/constants';
 
 const NumberGrid: React.FC = () => {
   const [selectedNumbers, setSelectedNumbers] = useState<number[]>([]);
@@ -115,7 +116,7 @@ const NumberGrid: React.FC = () => {
         
         {/* Bookmark Tabs */}
         <div className="flex space-x-1 mt-2">
-          {['javacode', 'Microservice', 'Best article', 'How to upload a file from...', '{EA} Add Git Ignore to existing...', 'convix', 'Angular 2 - Async Validator...', 'german'].map((tab, index) => (
+          {BROWSER_CONFIG.BOOKMARKS.map((tab, index) => (
             <div key={index} className="bg-muted/60 px-3 py-1 rounded-t text-xs truncate max-w-32 border border-border/30 hover:bg-muted/80 transition-colors">
               {tab}
             </div>

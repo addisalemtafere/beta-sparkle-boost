@@ -1,73 +1,262 @@
-# Welcome to your Lovable project
+# RehaBingo - Professional Gaming Studio
 
-## Project info
+A modern, production-ready gaming platform featuring interactive number games and Bingo with professional UI/UX design.
 
-**URL**: https://lovable.dev/projects/5d67506e-86d6-422c-8771-60ffe12eaba5
+## 🎮 Features
 
-## How can I edit this code?
+### Games
+- **Number Grid Game**: Interactive 1-100 number selection with betting
+- **Bingo Game**: Classic 5x5 Bingo with called numbers and win detection
+- **Complete Game Flow**: Join → Select Numbers → Bingo Game progression
 
-There are several ways of editing your application.
+### Professional Features
+- **Modern UI/UX**: Glassmorphism design with smooth animations
+- **Responsive Design**: Works perfectly on all devices
+- **Game State Management**: Persistent game state with localStorage
+- **Error Handling**: Comprehensive error boundaries and graceful degradation
+- **Accessibility**: Keyboard navigation and ARIA labels
+- **Analytics Ready**: Built-in event tracking system
+- **Production Ready**: Error boundaries, loading states, and performance optimizations
 
-**Use Lovable**
+## 🚀 Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5d67506e-86d6-422c-8771-60ffe12eaba5) and start prompting.
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
 
-Changes made via Lovable will be committed automatically to this repo.
+### Installation
+```bash
+# Clone the repository
+git clone <repository-url>
+cd beta-sparkle-boost
 
-**Use your preferred IDE**
+# Install dependencies
+npm install
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+## 🏗️ Project Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+src/
+├── components/          # Reusable UI components
+│   ├── ui/             # Base UI components (shadcn/ui)
+│   ├── Header.tsx      # Main navigation header
+│   ├── GameCard.tsx    # Game selection cards
+│   ├── Navigation.tsx  # Bottom navigation
+│   ├── ErrorBoundary.tsx # Error handling
+│   └── LoadingSpinner.tsx # Loading states
+├── pages/              # Page components
+│   ├── Index.tsx       # Main landing page
+│   ├── NumberGrid.tsx  # Number selection game
+│   ├── BingoGame.tsx   # Bingo game
+│   └── NotFound.tsx    # 404 page
+├── lib/                # Utilities and configuration
+│   ├── utils.ts        # Game utilities and helpers
+│   └── constants.ts    # Game constants and configuration
+├── hooks/              # Custom React hooks
+│   └── useGameState.ts # Game state management
+└── App.tsx             # Main application component
+```
 
-**Use GitHub Codespaces**
+## 🎯 Game Flow
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. **Home Page**: User sees game cards and features
+2. **Join Game**: Click "Join Game" on any card
+3. **Number Selection**: Select numbers from 1-100 grid (up to 10)
+4. **Success Transition**: Beautiful modal with loading animation
+5. **Bingo Game**: Play 5x5 Bingo with called numbers
+6. **Win Detection**: Automatic Bingo pattern validation
 
-## What technologies are used for this project?
+## 🎨 Design System
 
-This project is built with:
+### Colors
+- **Primary**: Orange gradient system
+- **Grid Colors**: Custom blue, purple, green, orange, red gradients
+- **Accent**: Yellow/gold highlights
+- **Background**: Dark gradient with glassmorphism effects
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Components
+- **Cards**: Glassmorphism with backdrop blur
+- **Buttons**: Gradient backgrounds with hover effects
+- **Animations**: Smooth transitions and loading states
+- **Typography**: Modern font hierarchy
 
-## How can I deploy this project?
+## 🔧 Configuration
 
-Simply open [Lovable](https://lovable.dev/projects/5d67506e-86d6-422c-8771-60ffe12eaba5) and click on Share -> Publish.
+### Game Settings
+```typescript
+// src/lib/constants.ts
+GAME_CONFIG = {
+  NUMBER_GRID: {
+    MIN_NUMBERS: 1,
+    MAX_NUMBERS: 10,
+    GRID_SIZE: 100,
+  },
+  BINGO: {
+    GRID_SIZE: 5,
+    WIN_MULTIPLIER: 2,
+  },
+  TIMER: {
+    DEFAULT_GAME_TIME: 300, // 5 minutes
+  },
+}
+```
 
-## Can I connect a custom domain to my Lovable project?
+### Local Storage Keys
+- `rehabingo_user_balance`: User's current balance
+- `rehabingo_game_history`: Game history and statistics
+- `rehabingo_selected_numbers`: Selected numbers for current game
+- `rehabingo_bingo_card`: Current Bingo card state
 
-Yes, you can!
+## 🛠️ Development
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Available Scripts
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run lint         # Run ESLint
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Code Quality
+- **TypeScript**: Full type safety
+- **ESLint**: Code linting and formatting
+- **Prettier**: Code formatting
+- **Error Boundaries**: Production error handling
+
+## 🚀 Production Deployment
+
+### Build Process
+```bash
+# Install dependencies
+npm install
+
+# Build for production
+npm run build
+
+# The build output will be in the dist/ directory
+```
+
+### Environment Variables
+```env
+# Add to .env file for production
+VITE_APP_TITLE=RehaBingo
+VITE_APP_VERSION=1.0.0
+```
+
+### Performance Optimizations
+- **Code Splitting**: Automatic route-based code splitting
+- **Tree Shaking**: Unused code elimination
+- **Image Optimization**: Optimized assets
+- **Caching**: Efficient caching strategies
+
+## 📊 Analytics & Monitoring
+
+### Built-in Analytics
+- Game start/completion events
+- Win/loss tracking
+- User interaction metrics
+- Performance monitoring
+
+### Error Tracking
+- Comprehensive error boundaries
+- Error logging and reporting
+- Graceful degradation
+
+## 🔒 Security Features
+
+- **Input Validation**: All user inputs validated
+- **XSS Protection**: Sanitized user inputs
+- **CSRF Protection**: Built-in protection
+- **Secure Storage**: Safe localStorage usage
+
+## 📱 Mobile Optimization
+
+- **Responsive Design**: Works on all screen sizes
+- **Touch Optimized**: Touch-friendly interactions
+- **Performance**: Optimized for mobile devices
+- **PWA Ready**: Progressive Web App capabilities
+
+## 🎮 Game Features
+
+### Number Grid Game
+- Select 1-10 numbers from 1-100 grid
+- Real-time selection feedback
+- Progress tracking
+- Bet amount calculation
+- Random selection option
+
+### Bingo Game
+- 5x5 Bingo card with FREE center space
+- Called numbers display
+- Interactive number marking
+- Win pattern detection (rows, columns, diagonals)
+- Timer countdown
+- Balance management
+
+## 🔄 State Management
+
+### Game State
+- User balance and betting
+- Game history and statistics
+- Current game progress
+- Selected numbers and Bingo cards
+
+### Persistence
+- Automatic state saving
+- Game progress recovery
+- User preferences storage
+
+## 🎨 Customization
+
+### Themes
+- Dark theme with gradient backgrounds
+- Customizable color schemes
+- Configurable animations
+
+### Game Rules
+- Adjustable betting limits
+- Configurable win multipliers
+- Customizable game timers
+
+## 📈 Future Enhancements
+
+- [ ] Multiplayer support
+- [ ] Leaderboards
+- [ ] Tournament mode
+- [ ] Sound effects
+- [ ] More game types
+- [ ] User accounts
+- [ ] Real-time updates
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🆘 Support
+
+For support and questions:
+- Create an issue in the repository
+- Check the documentation
+- Review the code examples
+
+---
+
+**RehaBingo** - Professional Gaming Studio 🎮✨
