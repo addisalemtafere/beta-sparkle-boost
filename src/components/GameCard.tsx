@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Clock, Coins, Trophy } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface GameCardProps {
   amount: number;
@@ -12,11 +13,17 @@ interface GameCardProps {
 
 export const GameCard = ({ amount, winAmount, timeLeft, delay = 0 }: GameCardProps) => {
   const [mounted, setMounted] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => setMounted(true), delay);
     return () => clearTimeout(timer);
   }, [delay]);
+
+  const handleJoinGame = () => {
+    // Navigate to number grid for number selection
+    navigate('/number-grid');
+  };
 
   return (
     <Card 
@@ -67,6 +74,7 @@ export const GameCard = ({ amount, winAmount, timeLeft, delay = 0 }: GameCardPro
           variant="game" 
           size="xl" 
           className="w-full group-hover:animate-pulse-glow"
+          onClick={handleJoinGame}
         >
           <Coins className="w-5 h-5" />
           Join Game

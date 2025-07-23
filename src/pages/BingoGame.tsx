@@ -3,6 +3,7 @@ import { ArrowLeft, Star, Download, User, Volume2, Clock, Coins } from 'lucide-r
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Link } from 'react-router-dom';
 
 interface BingoNumber {
   letter: string;
@@ -159,8 +160,11 @@ const BingoGame: React.FC = () => {
         {/* Top Information Bar */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2 text-foreground">
+            <Link to="/" className="flex items-center space-x-2 text-foreground hover:text-primary transition-colors">
               <ArrowLeft className="w-5 h-5" />
+              <span>Back to Games</span>
+            </Link>
+            <div className="flex items-center space-x-2">
               <Coins className="w-5 h-5 text-primary" />
               <span className="text-lg font-semibold">{balance} Br</span>
             </div>

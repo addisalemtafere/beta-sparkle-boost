@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import { Link } from 'react-router-dom';
 
 const NumberGrid: React.FC = () => {
   const [selectedNumbers, setSelectedNumbers] = useState<number[]>([]);
@@ -12,6 +13,7 @@ const NumberGrid: React.FC = () => {
   const [betAmount, setBetAmount] = useState(0);
   const [maxSelections] = useState(10);
   const [isGameActive, setIsGameActive] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   // Timer effect
   useEffect(() => {
@@ -67,6 +69,12 @@ const NumberGrid: React.FC = () => {
     setIsGameActive(true);
     setBetAmount(prev => prev + selectedNumbers.length);
     setBalance(prev => prev - selectedNumbers.length);
+    setShowSuccess(true);
+    
+    // Navigate to Bingo game after a short delay
+    setTimeout(() => {
+      window.location.href = '/bingo-game';
+    }, 2000);
   };
 
   const resetGame = () => {
@@ -120,12 +128,13 @@ const NumberGrid: React.FC = () => {
         {/* Top Bar */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-2 text-foreground">
+            <Link to="/" className="flex items-center space-x-2 text-foreground hover:text-primary transition-colors">
               <ArrowLeft className="w-5 h-5" />
-              <div className="flex items-center space-x-2">
-                <Coins className="w-5 h-5 text-primary" />
-                <span className="text-lg font-semibold">{balance.toLocaleString()} Br</span>
-              </div>
+              <span>Back to Games</span>
+            </Link>
+            <div className="flex items-center space-x-2">
+              <Coins className="w-5 h-5 text-primary" />
+              <span className="text-lg font-semibold">{balance.toLocaleString()} Br</span>
             </div>
             <h1 className="text-2xl font-bold text-foreground">Select Cartella</h1>
           </div>
@@ -217,7 +226,7 @@ const NumberGrid: React.FC = () => {
             disabled={selectedNumbers.length === 0 || isGameActive}
           >
             <Coins className="w-5 h-5 mr-2" />
-            Start Game ({selectedNumbers.length} numbers)
+            {isGameActive ? 'Starting Bingo Game...' : `Start Game (${selectedNumbers.length} numbers)`}
           </Button>
           <Button 
             variant="outline"
@@ -246,14 +255,28 @@ const NumberGrid: React.FC = () => {
           )}
         </div>
 
-        {/* Game Status */}
-                  {isGameActive && (
-            <div className="mt-6 text-center">
-              <Badge className="bg-gradient-to-r from-grid-warning to-grid-danger text-white px-4 py-2 text-lg shadow-lg">
-                🎮 Game Active - Time Remaining: {formatTime(timeLeft)}
-              </Badge>
+                {/* Game Status */}
+        {isGameActive && (
+          <div className="mt-6 text-center">
+            <Badge className="bg-gradient-to-r from-grid-warning to-grid-danger text-white px-4 py-2 text-lg shadow-lg">
+              🎮 Game Active - Time Remaining: {formatTime(timeLeft)}
+            </Badge>
+          </div>
+        )}
+
+        {/* Success Message */}
+        {showSuccess && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+            <div className="bg-card border border-border rounded-lg p-8 text-center shadow-xl animate-slide-up">
+              <div className="text-6xl mb-4">🎉</div>
+              <h3 className="text-2xl font-bold text-foreground mb-2">Numbers Selected!</h3>
+              <p className="text-muted-foreground mb-4">
+                You selected {selectedNumbers.length} numbers. Redirecting to Bingo game...
+              </p>
+              <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto"></div>
             </div>
-          )}
+          </div>
+        )}
       </div>
     </div>
   );
