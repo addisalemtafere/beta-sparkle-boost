@@ -49,6 +49,19 @@ All colors MUST be HSL.
     --glow-accent: 0 0 20px hsl(35 100% 65% / 0.3);
     --shadow-card: 0 10px 40px hsl(222 47% 4% / 0.8);
     
+    /* Number Grid specific colors */
+    --grid-primary: 220 70% 50%;
+    --grid-secondary: 280 60% 60%;
+    --grid-accent: 160 70% 45%;
+    --grid-success: 142 76% 36%;
+    --grid-warning: 38 92% 50%;
+    --grid-danger: 0 84% 60%;
+    
+    /* Number Grid gradients */
+    --gradient-grid: linear-gradient(135deg, hsl(220 70% 50%), hsl(280 60% 60%));
+    --gradient-grid-hover: linear-gradient(135deg, hsl(220 70% 55%), hsl(280 60% 65%));
+    --gradient-grid-selected: linear-gradient(135deg, hsl(142 76% 36%), hsl(160 70% 45%));
+    
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-glow: box-shadow 0.3s ease;

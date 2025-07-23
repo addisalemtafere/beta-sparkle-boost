@@ -62,12 +62,23 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				grid: {
+					primary: 'hsl(var(--grid-primary))',
+					secondary: 'hsl(var(--grid-secondary))',
+					accent: 'hsl(var(--grid-accent))',
+					success: 'hsl(var(--grid-success))',
+					warning: 'hsl(var(--grid-warning))',
+					danger: 'hsl(var(--grid-danger))'
 				}
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
 				'gradient-card': 'var(--gradient-card)',
-				'gradient-hero': 'var(--gradient-hero)'
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-grid': 'var(--gradient-grid)',
+				'gradient-grid-hover': 'var(--gradient-grid-hover)',
+				'gradient-grid-selected': 'var(--gradient-grid-selected)'
 			},
 			boxShadow: {
 				'glow-primary': 'var(--glow-primary)',
